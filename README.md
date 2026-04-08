@@ -1,66 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Secure PHP Authentication & CRUD System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A secure Laravel 11 application featuring user authentication, role-based access control, and full CRUD functionality for user management.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Authentication
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* User registration with strong password validation
+* Secure login with rate limiting (5 attempts, 5-minute lockout)
+* Session-based authentication with secure cookie handling
+* Password reset via email
+* Remember me functionality
+* Automatic session regeneration (prevents fixation attacks)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Security
 
-## Learning Laravel
+* CSRF protection on all forms
+* XSS prevention (input sanitization and output escaping via Blade)
+* SQL injection prevention (Eloquent ORM / prepared statements)
+* Password hashing with bcrypt (password_hash / password_verify)
+* Secure session configuration (HTTP-only, secure cookies, SameSite)
+* Rate limiting on login and password reset
+* Input validation (server-side with FormRequest, client-side JavaScript)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### User Management (CRUD)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* Create new users (managers/admins only)
+* View user list with search, filtering, and pagination
+* Update user information
+* Soft delete users with confirmation
+* Toggle user active/inactive status
+* Role-based access control (Admin, Manager, User)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Additional Features
 
-## Laravel Sponsors
+* CSRF protection (Laravel default)
+* Password reset via email
+* Role-based access control
+* Last login tracking
+* Password strength validation
+* Soft deletes for data recovery
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Requirements
 
-### Premium Partners
+* PHP 8.2+
+* Composer
+* MySQL 8.0+ or MariaDB 10.4+
+* Node.js and NPM (optional, for asset compilation)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Installation
 
-## Contributing
+1. Clone the repository
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   ```bash
+   git clone https://github.com/JamesManalili/PracticalTest
+   cd PracticalTest
+   ```
 
-## Code of Conduct
+2. Install dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   ```bash
+   composer install
+   ```
 
-## Security Vulnerabilities
+3. Copy environment file
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   cp .env.example .env
+   ```
 
-## License
+4. Configure your database in `.env`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. Generate application key
+
+   ```bash
+   php artisan key:generate
+   ```
+
+6. Run migrations
+
+   ```bash
+   php artisan migrate
+   ```
+
+7. Start the server
+
+   ```bash
+   php artisan serve
+   ```
+
+## Overview
+
+This system demonstrates secure implementation of authentication and user management using Laravel best practices. It includes proper validation, protection against common web vulnerabilities, and structured role-based access control.
